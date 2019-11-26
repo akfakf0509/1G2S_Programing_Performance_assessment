@@ -76,7 +76,7 @@ int getKeyDown() {
 }
 
 int random(int min, int max) {
-	randomkey = (int)time(NULL);
+	max++;
 	srand(randomkey++);
-	return rand() % ((max - min) + 1) - min;
+	return rand() % ((max - min) - 1) + min;
 }
