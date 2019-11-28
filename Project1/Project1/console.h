@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <iostream>
 #include <conio.h>
 #include <Windows.h>
 #include <stdbool.h>
@@ -23,10 +24,16 @@ typedef struct _BOX_SIZE {
 
 BOX_SIZE consoleSize = { 120, 30 };
 
+void setConsoleTitle(const char *titile);
 void setCursorPos(short x, short y);
 void setCursorVisibility(unsigned long size, bool visibility);
 void setConsoleSize(short width, short height);
+void setConsoleColor(short color_code);
 int getKeyDown();
+
+void setConsoleTitle(const char *title) {
+	
+}
 
 void setCursorPos(short x, short y) {
 	COORD position = { x, y };
@@ -73,6 +80,10 @@ int getKeyDown() {
 			return ch;
 	}
 	return -1;
+}
+
+void setConsoleColor(short color_code) {
+	SetConsoleTextAttribute(OUTPUT_HANDLE, color_code);
 }
 
 int random(int min, int max) {
